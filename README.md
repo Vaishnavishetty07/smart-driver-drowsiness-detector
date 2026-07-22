@@ -1,111 +1,32 @@
 # Driver Drowsiness Detection System
 
-An AI-based computer vision system that detects driver drowsiness in real-time and helps prevent accidents caused by fatigue. The system monitors the driver's eye movements and facial features using a camera and provides an alert when signs of drowsiness are detected.
+A real-time driver drowsiness detection system built using computer vision. It monitors facial landmarks through a webcam feed and alerts the driver when signs of fatigue are detected.
 
-## Project Objective
+## How It Works
 
-The main objective of this project is to develop a smart driver monitoring system that can identify drowsy behavior while driving. By using computer vision and deep learning techniques, the system continuously analyzes the driver's face and detects fatigue conditions to improve road safety.
+1. Captures live video from a camera.
+2. Uses MediaPipe FaceMesh to detect facial landmarks (eyes, mouth, iris) in real time.
+3. Calculates the following:
+   - Eye Aspect Ratio (EAR) to detect prolonged eye closure
+   - Mouth Aspect Ratio (MAR) to detect yawning
+   - Head Pose (roll, pitch, yaw) to detect head nodding, using OpenCV's solvePnP
+   - Gaze direction using iris landmarks
+4. Combines these signals over a rolling time window to classify the driver's state as Normal or Drowsy.
+5. Triggers an alert if drowsiness persists beyond a set threshold.
 
-## Features
+## Tech Stack
 
-- Real-time driver face detection
-- Eye closure and blink monitoring
-- Drowsiness detection using facial features
-- Alert generation when the driver is sleepy
-- Real-time video processing
-- Computer vision-based monitoring system
+Language: Python
 
-## Working Principle
+Computer Vision: OpenCV, MediaPipe FaceMesh
 
-1. The system captures live video through a camera.
-2. The driver's face is detected from the video frames.
-3. Eye and facial landmarks are analyzed.
-4. The system calculates signs of drowsiness based on eye closure duration.
-5. If drowsiness is detected, an alert is generated to warn the driver.
+Core Techniques: Facial landmark detection, Eye Aspect Ratio and Mouth Aspect Ratio calculation, head pose estimation
 
-## Technology Stack
+## How to Run
 
-### Programming Language
-- Python
+Step 1: pip install opencv-python mediapipe numpy
 
-### Computer Vision
-- OpenCV
-- Dlib / Face Landmark Detection
-
-### Machine Learning / Deep Learning
-- Convolutional Neural Networks (CNN)
-- Deep Learning techniques
-
-### Libraries
-- NumPy
-- Pandas
-- TensorFlow / Keras
-
-### Tools
-- VS Code
-- Jupyter Notebook
-- GitHub
-
-## Project Structure
-
-```
-
-driver-drowsiness-detection/
-│
-├── dataset/
-├── models/
-├── main.py
-├── requirements.txt
-├── README.md
-└── resources/
-
-```
-
-## How to Run the Project
-
-### 1. Clone the Repository
-
-```
-
-git clone <repository-url>
-
-```
-
-### 2. Install Required Dependencies
-
-```
-
-pip install -r requirements.txt
-
-```
-
-### 3. Run the Application
-
-```
-
-python main.py
-
-```
-
-### 4. Allow Camera Access
-
-The system will start capturing video through the camera and detect drowsiness in real time.
-
-## Applications
-
-- Driver safety monitoring systems
-- Smart vehicles
-- Transportation safety
-- Fleet management systems
-- Accident prevention systems
-
-## Future Enhancements
-
-- Integration with IoT-enabled vehicles
-- Voice-based warning system
-- Mobile application support
-- Real-time cloud monitoring
-- Improved accuracy using advanced deep learning models
+Step 2: python main.py
 
 ## Author
 
