@@ -1,8 +1,6 @@
 # -----------------------------------------------------------------------------
 # Main function for the driver's fatigue level estimation algorithm
-# -----------------------------------------------------------------------------
-# Author: Daniel Oliveira
-# https://github.com/danielsousaoliveira
+
 # -----------------------------------------------------------------------------
 
 import cv2
